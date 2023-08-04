@@ -4,7 +4,6 @@ import { renderTree } from "./renderTree";
 
 function App() {
   var visited = Array(Object.keys(data).length + 1).fill(false);
-  console.log(visited);
   return (
     <div className="tree">
       <ul>
