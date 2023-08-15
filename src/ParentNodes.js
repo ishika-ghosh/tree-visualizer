@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { data } from "./data";
+import { data } from "./realData";
 import ChildNode from "./ChildNode";
 
 function ParentNodes() {
@@ -20,17 +20,10 @@ function ParentNodes() {
 
 export default ParentNodes;
 const getUltimateParents = (data) => {
-  const childKeys = new Set();
+  let newArray = [];
   for (const key in data) {
-    const children = data[key].child_ID;
-    children.forEach((element) => {
-      childKeys.add(element);
-    });
-  }
-  const newArray = [];
-  for (const key in data) {
-    if (!childKeys.has(Number(key))) {
-      newArray.push(Number(key));
+    if (data[key].parentActionId === null) {
+      newArray.push(key);
     }
   }
   return newArray;

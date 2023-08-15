@@ -2,7 +2,6 @@ import React from "react";
 
 function ChildNode({ node, data, isUltimateParent }) {
   const nodeData = data[node];
-
   return (
     <>
       <li className={isUltimateParent ? "child directChild" : "child"}>
@@ -10,9 +9,9 @@ function ChildNode({ node, data, isUltimateParent }) {
           <span>{nodeData.name}</span>
         </p>
 
-        {nodeData.child_ID && nodeData.child_ID.length ? (
+        {nodeData.child && nodeData.child.length ? (
           <ul className="parent">
-            {nodeData.child_ID.map((child) => (
+            {nodeData.child.map((child) => (
               <ChildNode
                 key={child}
                 node={child}
@@ -21,7 +20,9 @@ function ChildNode({ node, data, isUltimateParent }) {
               />
             ))}
           </ul>
-        ) : null}
+        ) : (
+          <button>Add</button>
+        )}
       </li>
     </>
   );
